@@ -1,4 +1,4 @@
-const BASE = "http://localhost:1337";
+const BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:1337";
 
 function getToken() {
   return localStorage.getItem("atheno_token");

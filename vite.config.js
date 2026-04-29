@@ -38,9 +38,14 @@ export default defineConfig({
             options: { cacheName: 'gstatic-fonts-cache', expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 } },
           },
           {
-            urlPattern: /^http:\/\/localhost:1337\/.*/i,
+            urlPattern: /^https:\/\/be-atheno-do\.vercel\.app\/.*/i,
             handler: 'NetworkFirst',
             options: { cacheName: 'api-cache', networkTimeoutSeconds: 5 },
+          },
+          {
+            urlPattern: /^http:\/\/localhost:1337\/.*/i,
+            handler: 'NetworkFirst',
+            options: { cacheName: 'api-cache-dev', networkTimeoutSeconds: 5 },
           },
         ],
       },
