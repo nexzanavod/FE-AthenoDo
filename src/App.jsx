@@ -5,6 +5,7 @@ import { useCanvasPan } from "./hooks/useCanvasPan";
 import { useAuth } from "./context/AuthContext";
 import { api } from "./lib/api";
 import { fromApi, toApi } from "./lib/noteAdapter";
+import { Notifications } from "./lib/notifications";
 import { Header } from "./components/layout/Header";
 import { Sidebar } from "./components/layout/Sidebar";
 import { ZoomControls } from "./components/layout/ZoomControls";
@@ -60,6 +61,20 @@ export default function App() {
       .then(data => setNotes((data.notes || data).map(fromApi)))
       .catch(console.error);
   }, [user, fetchRange.from, fetchRange.to]);
+
+  // Ask for notification permission once after login
+  useEffect(() => {
+    if (user && Notifications.permission() === "default") {
+      Notifications.requestPermission();
+    }
+  }, [user]);
+
+  // Schedule reminders whenever notes change
+  useEffect(() => {
+    Notifications.cancelAll();
+    Notifications.scheduleAll(notes);
+    return () => Notifications.cancelAll();
+  }, [notes]);
 
   useEffect(() => {
     const stage = stageRef.current;

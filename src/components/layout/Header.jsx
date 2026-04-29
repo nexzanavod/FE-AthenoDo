@@ -1,9 +1,24 @@
+import { useState } from "react";
 import { Icon } from "../Icons";
 import { ZOOM_LEVELS } from "../../constants";
 import { useAuth } from "../../context/AuthContext";
+import { Notifications } from "../../lib/notifications";
 
 export function Header({ zoomIdx, setZoomIdx, dateLabel, subLabel, onPrev, onNext, onToday, onNewNote }) {
   const { user, logout } = useAuth();
+  const [perm, setPerm] = useState(Notifications.permission());
+
+  const handleBellClick = async () => {
+    if (perm === "granted") {
+      // Send a test notification
+      new Notification("AthenoDo notifications enabled", { body: "You'll be reminded when notes are due.", icon: "/icon-192.png" });
+    } else if (perm === "default") {
+      const next = await Notifications.requestPermission();
+      setPerm(next);
+    } else {
+      alert("Notifications are blocked. Enable them in your browser site settings.");
+    }
+  };
   return (
     <header className="header">
       <div className="brand">
@@ -32,6 +47,20 @@ export function Header({ zoomIdx, setZoomIdx, dateLabel, subLabel, onPrev, onNex
       <button className="btn-primary" onClick={onNewNote}>
         <Icon.Plus /> <span className="label">New note</span>
       </button>
+
+      {user && Notifications.isSupported() && (
+        <button
+          className="icon-btn"
+          onClick={handleBellClick}
+          title={perm === "granted" ? "Notifications enabled — click to test" : perm === "denied" ? "Notifications blocked" : "Enable notifications"}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2a4 4 0 0 0-4 4v3l-1 2h10l-1-2V6a4 4 0 0 0-4-4zM6.5 13a1.5 1.5 0 0 0 3 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            {perm === "granted" && <circle cx="12" cy="4" r="2" fill="#3dd68c" />}
+            {perm === "denied" && <circle cx="12" cy="4" r="2" fill="#dc6060" />}
+          </svg>
+        </button>
+      )}
 
       {user && (
         <button className="icon-btn header-logout" onClick={logout} title={`Sign out (${user.email})`}>
