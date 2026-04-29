@@ -1,0 +1,37 @@
+.paper.todo {
+  background: var(--paper-mint);
+}
+.paper.todo .todo-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.paper.todo .todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.paper.todo .check {
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--paper-ink);
+  border-radius: 4px;
+  flex: 0 0 auto;
+  margin-top: 1px;
+  position: relative;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+}
+.paper.todo .todo-item.done .check {
+  background: var(--paper-ink);
+}
+.paper.todo .todo-item.done .check::after {
+  content: "";
+  position: absolute;
+  left: 4px; top: 1px;
+  width: 5px; height: 9px;
+  border: solid var(--paper-mint);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.paper.todo .todo-item.done .text {
+  text-decoration: line-through;
+  color: var(--paper-ink-soft);
+}

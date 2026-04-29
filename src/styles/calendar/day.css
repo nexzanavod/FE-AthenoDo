@@ -1,0 +1,48 @@
+.day-view {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 80px 1fr 360px;
+  padding: 40px 40px 60px;
+  gap: 20px;
+  width: 1200px;
+}
+.day-view .day-title {
+  grid-column: 1 / -1;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.day-view .day-title .sub {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-500);
+  margin-top: 4px;
+  letter-spacing: 0;
+}
+.day-view .hour-col { border-right: 1px solid var(--navy-line); padding-top: 10px; }
+.day-view .day-timeline {
+  position: relative;
+  padding-top: 10px;
+}
+.day-view .day-timeline .hour-cell {
+  height: 64px;
+  border-top: 1px solid var(--navy-line);
+}
+.day-view .day-timeline .hour-cell:first-child { border-top: none; }
+
+.day-paper-pile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 10px;
+}
+.day-paper-pile h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin: 0 0 4px 4px;
+}

@@ -1,0 +1,49 @@
+:root {
+  /* Navy palette */
+  --navy-950: #0a1430;
+  --navy-900: #0e1b3a;
+  --navy-850: #122247;
+  --navy-800: #152544;
+  --navy-700: #1c2f5c;
+  --navy-600: #243d75;
+  --navy-500: #3257a3;
+  --navy-line: rgba(120, 160, 230, 0.10);
+  --navy-line-strong: rgba(140, 180, 240, 0.20);
+
+  /* Accents */
+  --accent: #6b9aff;
+  --accent-soft: #9bb8ff;
+  --accent-deep: #3866ff;
+
+  /* Text */
+  --ink-100: #eaf0ff;
+  --ink-300: #b8c4e0;
+  --ink-500: #7886aa;
+  --ink-700: #4a5577;
+
+  /* Paper colors */
+  --paper-yellow: #fde68a;
+  --paper-yellow-edge: #f5d36a;
+  --paper-cream: #f5ecd6;
+  --paper-cream-edge: #e8dcb8;
+  --paper-mint: #c9ecd8;
+  --paper-mint-edge: #a9d8be;
+  --paper-blue: #cfe0fb;
+  --paper-blue-edge: #aac7f0;
+  --paper-pink: #f7c9d6;
+  --paper-pink-edge: #ebafc0;
+  --paper-lavender: #d8c9f5;
+  --paper-lavender-edge: #c0aee5;
+
+  --paper-ink: #1a2240;
+  --paper-ink-soft: #4a5577;
+
+  /* Type */
+  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-paper: "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --header-h: 56px;
+  --sidebar-w: 240px;
+}

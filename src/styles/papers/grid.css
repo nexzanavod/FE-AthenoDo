@@ -1,0 +1,9 @@
+.paper.grid {
+  background: var(--paper-blue);
+  background-image:
+    linear-gradient(rgba(74, 85, 119, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 85, 119, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-position: 14px 38px;
+}
+.paper.grid .p-body { font-size: 12.5px; line-height: 16px; }
